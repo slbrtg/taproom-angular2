@@ -6,6 +6,7 @@ import { Keg } from './keg.model';
   template:`
   <h1 class="jumbotron">Welcome to The Booch</h1>
   <h1>For Patrons,</h1>
+  <h3>Click a booch to tap a pint</h3>
   <patron-keg-list [patronKegList]="masterKegList"></patron-keg-list>
   <br>
   <h1>For Employees, </h1>

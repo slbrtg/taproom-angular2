@@ -18,8 +18,13 @@ import { Keg } from './keg.model';
 export class PatronKegListComponent{
   @Input() patronKegList: Keg[];
 
-  tap(chosenKeg){
-    //do stuff
+  tap(chosenKeg: Keg){
+    if(chosenKeg.pints === 0){
+      alert("This keg is tapped! An employee will refill it soon");
+    } else {
+      chosenKeg.pints -= 8;
+      alert("Enjoy your pint of Booch!");
+    }
   }
 
 }
