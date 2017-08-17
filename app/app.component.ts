@@ -10,7 +10,9 @@ import { Keg } from './keg.model';
   <patron-keg-list [patronKegList]="masterKegList"></patron-keg-list>
   <br>
   <h1>For Employees, </h1>
-  <employee-keg-list [employeeKegList]="masterKegList"></employee-keg-list>
+  <h2>Click to refill, cuse edit button to change details</h2>
+  <employee-keg-list [employeeKegList]="masterKegList" (clickSender)="editKeg($event)"></employee-keg-list>
+  <edit-keg [childSelectedKeg]="selectedKeg" (doneButtonClickedSender)="finishedEditing()"></edit-keg>
   `
 })
 export class AppComponent {
@@ -20,5 +22,14 @@ export class AppComponent {
     new Keg("Synergy", "Natural Something", 8, "Grass"),
     new Keg("The Booch", "Booch Daddy", 1, "Roquefort")
   ]
+
+  editKeg(chosenKeg) {
+    this.selectedKeg = chosenKeg;
+  }
+
+  finishedEditing(){
+    this.selectedKeg = null;
+    console.log(this.selectedKeg);
+  }
 
 }

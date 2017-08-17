@@ -12,12 +12,20 @@ import { Keg } from './keg.model';
     <h4>Price: {{chosenKeg.price}}$</h4>
     <h1> PINTS LEFT: {{chosenKeg.pints}}</h1>
     <hr>
+    <button
+      (click)="editButtonHasBeenClicked(chosenKeg)">Edit!
+    </button>
   </div>
   `
 })
 
 export class EmployeeKegListComponent{
   @Input() employeeKegList: Keg[];
+  @Output() clickSender = new EventEmitter();
+
+  editButtonHasBeenClicked(kegToEdit: Keg){
+    this.clickSender.emit(kegToEdit);
+  }
 
   status(chosenKeg){
     //do things here
